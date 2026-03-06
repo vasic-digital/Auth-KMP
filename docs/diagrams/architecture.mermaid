@@ -1,0 +1,25 @@
+graph TD
+    subgraph "digital.vasic.auth"
+        A[OAuth2Flow]
+        B[AuthTokenManager]
+        C[SecureStorage]
+        D[TokenResponse]
+        E[TokenInfo]
+    end
+
+    subgraph "Provider Subclasses"
+        F[DropboxOAuth2Flow]
+        G[GoogleDriveOAuth2Flow]
+        H[OneDriveOAuth2Flow]
+    end
+
+    F --> A
+    G --> A
+    H --> A
+    A --> KC[Ktor Client]
+    A --> KS[kotlinx-serialization]
+    B --> C
+    B --> KD[kotlinx-datetime]
+    B --> KM[kotlinx-coroutines Mutex]
+    B --> E
+    A --> D
