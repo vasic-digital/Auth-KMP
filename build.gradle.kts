@@ -4,6 +4,9 @@ plugins {
     alias(libs.plugins.android.library)
 }
 
+group = "digital.vasic.auth"
+version = "1.0.0"
+
 kotlin {
     androidTarget {
         compilations.all {
@@ -13,7 +16,13 @@ kotlin {
         }
     }
 
-    jvm("desktop")
+    jvm("desktop") {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "11"
+            }
+        }
+    }
 
     iosX64()
     iosArm64()
